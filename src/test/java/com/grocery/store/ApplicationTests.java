@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.Date;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -11,7 +12,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
 
 import com.grocery.store.entity.Invoice;
 import com.grocery.store.entity.Item;
@@ -46,4 +46,27 @@ class ApplicationTests {
 		//Assert.notNull(inv);
 	}
 
+	@Test
+	void testEmployeeDiscount(){
+		double discount = invoiceService.getNetPayableAmount("0001");
+		Assert.assertEquals(30, discount);
+	}
+
+	@Test
+	void testAffiliateDiscount(){
+		double discount = invoiceService.getNetPayableAmount("0002");
+		//Assert.assertEquals(30, discount);
+	}
+
+	@Test
+	void testCustomerDiscount(){
+		double discount = invoiceService.getNetPayableAmount("0003");
+		//Assert.assertEquals(30, discount);
+	}
+
+	@Test
+	void testLoyalCustomerDiscount(){
+		double discount = invoiceService.getNetPayableAmount("0004");
+		//Assert.assertEquals(30, discount);
+	}
 }
