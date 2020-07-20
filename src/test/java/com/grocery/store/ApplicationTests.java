@@ -19,15 +19,13 @@ import com.grocery.store.entity.SiteUser;
 import com.grocery.store.enums.UserTypeEnum;
 import com.grocery.store.services.InvoiceService;
 
-@SpringBootTest
-@RunWith(MockitoJUnitRunner.class)
+
+@SpringBootTest(properties="spring.main.lazy-initialization=true")
 class ApplicationTests {
 
-	@Mock
+	@Autowired
 	InvoiceService invoiceService;
-	
-	
-	@Test
+
 	void testGetDiscount() {
 		
 		SiteUser usr = new SiteUser();
@@ -49,24 +47,30 @@ class ApplicationTests {
 	@Test
 	void testEmployeeDiscount(){
 		double discount = invoiceService.getNetPayableAmount("0001");
-		Assert.assertEquals(30, discount);
+		Assert.assertEquals(14, discount, 0.1);
 	}
 
 	@Test
 	void testAffiliateDiscount(){
 		double discount = invoiceService.getNetPayableAmount("0002");
-		//Assert.assertEquals(30, discount);
+		Assert.assertEquals(18, discount, 0.1);
 	}
 
 	@Test
 	void testCustomerDiscount(){
 		double discount = invoiceService.getNetPayableAmount("0003");
-		//Assert.assertEquals(30, discount);
+		Assert.assertEquals(20, discount, 0.1);
 	}
 
 	@Test
 	void testLoyalCustomerDiscount(){
 		double discount = invoiceService.getNetPayableAmount("0004");
-		//Assert.assertEquals(30, discount);
+		Assert.assertEquals(19, discount, 0.1);
+	}
+
+	@Test
+	void testGroceryDiscount(){
+		double discount = invoiceService.getNetPayableAmount("0005");
+		Assert.assertEquals(100, discount, 0.1);
 	}
 }

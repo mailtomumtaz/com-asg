@@ -8,15 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 /**
  * @author Mumtaz
@@ -32,9 +24,9 @@ public class Invoice {
 	@Column(name = "invoice_no")
 	private String invoiceNumber;
 	
-	@OneToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@Column(name= "items")
-	private Set<Item> items = new HashSet<Item>();
+	private List<Item> items;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id", referencedColumnName="id")
@@ -56,11 +48,11 @@ public class Invoice {
 		this.invoiceNumber = invoiceNumber;
 	}
 
-	public Set<Item> getItems() {
+	public List<Item> getItems() {
 		return items;
 	}
 
-	public void setItems(Set<Item> items) {
+	public void setItems(List<Item> items) {
 		this.items = items;
 	}
 

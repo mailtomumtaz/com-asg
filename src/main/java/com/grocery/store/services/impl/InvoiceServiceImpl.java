@@ -45,18 +45,19 @@ public class InvoiceServiceImpl implements InvoiceService {
 	@Override
 	public double getNetPayableAmount(String invoiceNumber) {
 		
-		Invoice invoice = invoiceRepository.findByInvoiceNumber(invoiceNumber);		
+		Invoice invoice = invoiceRepository.findByInvoiceNumber(invoiceNumber);
+
+		if(invoice == null) return 0d;
+
 		return processDiscount(invoice.getUser(), invoice.getItems());
 	}
 	
-	private double processDiscount(SiteUser user, Set<Item> items) {
+	private double processDiscount(SiteUser user, List<Item> items) {
 		
 		double totalAmount = 0 ;
 		double userDiscount = getUserDiscountPercent(user);
-		System.out.println("User discount:"+ userDiscount);
 		for(Item item : items) {
 			if(! item.getIsGrocery()) {
-				System.out.println("In not grocery");
 				totalAmount += (item.getItemPrice() - 
 									(item.getItemPrice() * userDiscount / 100));
 			} else {
@@ -76,7 +77,6 @@ public class InvoiceServiceImpl implements InvoiceService {
 	private double getUserDiscountPercent(SiteUser user)
 	{
 		String type = user.getUserType().name();
-		System.out.println("User type:"+ type);
 		if(user.getUserType() == UserTypeEnum.EXISTINGUSER)
 		{
 			long yearDiff = ChronoUnit.YEARS.between(user.getJoiningDate(), LocalDateTime.now());
