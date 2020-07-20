@@ -12,4 +12,7 @@ INSERT INTO ITEM(id, name, is_grocery, price) values(2,'P2', false, 20);
 INSERT INTO ITEM(id, name, is_grocery, price) values(3,'P3', false, 30);
 INSERT INTO ITEM(id, name, is_grocery, price) values(4,'P14', true, 100);
 
+INSERT INTO INVOICE (id, invoice_no, user_id) values(1, '0001', 1);
+INSERT INTO INVOICE_ITEMS (invoice_id, items_id) values(1, 2);
+
 

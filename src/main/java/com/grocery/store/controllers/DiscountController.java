@@ -15,13 +15,14 @@ import com.grocery.store.services.InvoiceService;
  *
  */
 @RestController
+@RequestMapping("/discount")
 public class DiscountController {
 
 	@Autowired
 	private InvoiceService invoiceService;
 	
-	@RequestMapping("/discount/{invoiceNumber}")
-	public double getDiscount(@PathVariable String invoiceNumber) {
+	@RequestMapping(path="/{invoiceNumber}")
+	public double getDiscount(@PathVariable("invoiceNumber") String invoiceNumber) {
 		return invoiceService.getNetPayableAmount(invoiceNumber);
 	}
 }
