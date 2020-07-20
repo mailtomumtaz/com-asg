@@ -25,5 +25,5 @@ INSERT INTO INVOICE_ITEMS (invoice_id, items_id) values(3, 2);
 INSERT INTO INVOICE (id, invoice_no, user_id) values(4, '0004', 4);
 INSERT INTO INVOICE_ITEMS (invoice_id, items_id) values(4, 2);
 
-INSERT INTO INVOICE (id, invoice_no, user_id) values(1, '0005', 1);
-INSERT INTO INVOICE_ITEMS (invoice_id, items_id) values(1, 4);
+INSERT INTO INVOICE (id, invoice_no, user_id) values(5, '0005', 1);
+INSERT INTO INVOICE_ITEMS (invoice_id, items_id) values(5, 4);
