@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.Date;
 
+import com.grocery.store.controllers.DiscountController;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +26,17 @@ class ApplicationTests {
 
 	@Autowired
 	InvoiceService invoiceService;
+
+	@Autowired
+	DiscountController controller;
+
+	@org.junit.Test
+	public void getDiscountTest()  {
+
+		String response = controller.getDiscount("0001");
+		String expected = "14.0";
+		Assert.assertEquals(expected, response);
+	}
 
 	//Test to verify staff discount
 	@Test

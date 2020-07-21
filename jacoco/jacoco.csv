@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+com.tech.webapp,com.grocery.store.enums,UserTypeEnum,30,67,4,0,4,9,4,3,2,3
+com.tech.webapp,com.grocery.store.services.impl,InvoiceServiceImpl,10,110,2,12,2,26,3,9,1,4
+com.tech.webapp,com.grocery.store.controllers,DiscountController,12,3,0,0,1,1,1,1,1,1
+com.tech.webapp,com.grocery.store.entity,Item,34,9,0,0,15,4,7,3,7,3
+com.tech.webapp,com.grocery.store.entity,Invoice,22,9,0,0,10,3,6,3,6,3
+com.tech.webapp,com.grocery.store.entity,SiteUser,22,9,0,0,10,3,6,3,6,3
+com.tech.webapp,com.grocery.store.entity,UserType,18,6,0,0,8,2,5,2,5,2
+com.tech.webapp,com.grocery.store,Application,8,0,0,0,3,0,2,0,2,0
