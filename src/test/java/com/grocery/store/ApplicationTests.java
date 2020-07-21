@@ -26,51 +26,39 @@ class ApplicationTests {
 	@Autowired
 	InvoiceService invoiceService;
 
-	void testGetDiscount() {
-		
-		SiteUser usr = new SiteUser();
-		usr.setUserName("Staff");		
-		usr.setUserType(UserTypeEnum.STAFF);
-		usr.setJoiningDate(LocalDate.of(2019, Month.JANUARY, 1));
-		Invoice invoice = new Invoice();
-		invoice.setInvoiceNumber("0002");
-		invoice.setUser(usr);
-		invoice.getItems().add(new Item("P1", false, 10));
-		invoice.getItems().add(new Item("P2", false, 50));
-		invoice.getItems().add(new Item("P3", true, 2000));
-		invoice.getItems().add(new Item("P4", false, 20));
-		
-		Invoice inv = invoiceService.addInvoice(invoice);
-		//Assert.notNull(inv);
-	}
-
+	//Test to verify staff discount
 	@Test
 	void testEmployeeDiscount(){
 		double discount = invoiceService.getNetPayableAmount("0001");
 		Assert.assertEquals(14, discount, 0.1);
 	}
 
+	// Test to verify affilicate discount
 	@Test
 	void testAffiliateDiscount(){
 		double discount = invoiceService.getNetPayableAmount("0002");
 		Assert.assertEquals(18, discount, 0.1);
 	}
 
+	// Test to verify new users have no discount
 	@Test
 	void testCustomerDiscount(){
 		double discount = invoiceService.getNetPayableAmount("0003");
 		Assert.assertEquals(20, discount, 0.1);
 	}
 
+	// Test to verify customer is more than 2 years old
 	@Test
 	void testLoyalCustomerDiscount(){
 		double discount = invoiceService.getNetPayableAmount("0004");
 		Assert.assertEquals(19, discount, 0.1);
 	}
 
+	// Test to verify no discount on grocery product
+	// Test to verify discount for over bill 100
 	@Test
 	void testGroceryDiscount(){
 		double discount = invoiceService.getNetPayableAmount("0005");
-		Assert.assertEquals(100, discount, 0.1);
+		Assert.assertEquals(95, discount, 0.1);
 	}
 }
