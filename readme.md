@@ -9,6 +9,8 @@ Use jdk1.8 and maven.
 update applications.properties for H2 settings or server port settings
 You must be able to write on c:\data (on windiws)
 
+data.sql contains scripts to populate data for test.
+
 ## Build
 ```
 1- "mvn install" to build project
