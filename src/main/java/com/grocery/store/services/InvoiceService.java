@@ -15,6 +15,6 @@ public interface InvoiceService {
 
 	public Invoice addInvoice(Invoice invoice);
 	
-	public double getNetPayableAmount(String invoiceNumber);
+	public String getNetPayableAmount(String invoiceNumber);
 	
 }

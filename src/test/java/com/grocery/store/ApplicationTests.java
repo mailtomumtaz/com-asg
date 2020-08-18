@@ -30,39 +30,31 @@ class ApplicationTests {
 	@Autowired
 	DiscountController controller;
 
-	@org.junit.Test
-	public void getDiscountTest()  {
-
-		String response = controller.getDiscount("0001");
-		String expected = "14.0";
-		Assert.assertEquals(expected, response);
-	}
-
 	//Test to verify staff discount
 	@Test
 	void testEmployeeDiscount(){
-		double discount = invoiceService.getNetPayableAmount("0001");
+		double discount = Double.parseDouble(invoiceService.getNetPayableAmount("0001"));
 		Assert.assertEquals(14, discount, 0.1);
 	}
 
 	// Test to verify affilicate discount
 	@Test
 	void testAffiliateDiscount(){
-		double discount = invoiceService.getNetPayableAmount("0002");
+		double discount = Double.parseDouble(invoiceService.getNetPayableAmount("0002"));
 		Assert.assertEquals(18, discount, 0.1);
 	}
 
 	// Test to verify new users have no discount
 	@Test
 	void testCustomerDiscount(){
-		double discount = invoiceService.getNetPayableAmount("0003");
+		double discount = Double.parseDouble(invoiceService.getNetPayableAmount("0003"));
 		Assert.assertEquals(20, discount, 0.1);
 	}
 
 	// Test to verify customer is more than 2 years old
 	@Test
 	void testLoyalCustomerDiscount(){
-		double discount = invoiceService.getNetPayableAmount("0004");
+		double discount = Double.parseDouble(invoiceService.getNetPayableAmount("0004"));
 		Assert.assertEquals(19, discount, 0.1);
 	}
 
@@ -70,7 +62,7 @@ class ApplicationTests {
 	// Test to verify discount for over bill 100
 	@Test
 	void testGroceryDiscount(){
-		double discount = invoiceService.getNetPayableAmount("0005");
+		double discount = Double.parseDouble(invoiceService.getNetPayableAmount("0005"));
 		Assert.assertEquals(95, discount, 0.1);
 	}
 }

@@ -1,12 +1,12 @@
 
-INSERT INTO USERTYPE(id, name, discount) values(0, 'STAFF', 30);
-INSERT INTO USERTYPE(id, name, discount) values(1, 'AFFILIATE', 10);
-INSERT INTO USERTYPE(id, name, discount) values(2, 'EXISTINGUSER', 0);
+INSERT INTO USERTYPE(id, name, discount) values(1, 'STAFF', 30);
+INSERT INTO USERTYPE(id, name, discount) values(2, 'AFFILIATE', 10);
+INSERT INTO USERTYPE(id, name, discount) values(3, 'EXISTINGUSER', 0);
 
-INSERT INTO SITEUSER(id, name, user_type, joining_date) values(1, 'staff', 0, '2019-1-4');
-INSERT INTO SITEUSER(id, name, user_type, joining_date) values(2, 'affiliate', 1, '2019-1-4');
-INSERT INTO SITEUSER(id, name, user_type, joining_date) values(3, 'customer1', 2, '2019-1-4');
-INSERT INTO SITEUSER(id, name, user_type, joining_date) values(4, 'customer2', 2, '2014-1-4');
+INSERT INTO SITEUSER(id, name, user_type, joining_date) values(1, 'staff', 1, '2019-1-4');
+INSERT INTO SITEUSER(id, name, user_type, joining_date) values(2, 'affiliate', 2, '2019-1-4');
+INSERT INTO SITEUSER(id, name, user_type, joining_date) values(3, 'customer1', 3, '2019-1-4');
+INSERT INTO SITEUSER(id, name, user_type, joining_date) values(4, 'customer2', 3, '2014-1-4');
 
 INSERT INTO ITEM(id, name, is_grocery, price) values(1,'P1', false, 10);
 INSERT INTO ITEM(id, name, is_grocery, price) values(2,'P2', false, 20);

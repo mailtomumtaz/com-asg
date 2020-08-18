@@ -43,13 +43,24 @@ public class InvoiceServiceImpl implements InvoiceService {
 	double discountYears;
 	
 	@Override
-	public double getNetPayableAmount(String invoiceNumber) {
-		
-		Invoice invoice = invoiceRepository.findByInvoiceNumber(invoiceNumber);
+	public String getNetPayableAmount(String invoiceNumber) {
 
-		if(invoice == null) return 0d;
+		try {
+			if (invoiceNumber.isEmpty()) {
+				return "A valid invoice number is required.";
+			}
 
-		return processDiscount(invoice.getUser(), invoice.getItems());
+			Invoice invoice = invoiceRepository.findByInvoiceNumber(invoiceNumber);
+
+			if (invoice == null) return "Invoice number not found.";
+
+			return "" + processDiscount(invoice.getUser(), invoice.getItems());
+		} catch (Exception ex) {
+			// Add log here
+
+			return "An error has occured. please contact administrator.";
+		}
+
 	}
 	
 	private double processDiscount(SiteUser user, List<Item> items) {
@@ -61,7 +72,6 @@ public class InvoiceServiceImpl implements InvoiceService {
 				totalAmount += (item.getItemPrice() - 
 									(item.getItemPrice() * userDiscount / 100));
 			} else {
-				System.out.println("In grocery");
 				totalAmount += item.getItemPrice();
 			}
 		}		

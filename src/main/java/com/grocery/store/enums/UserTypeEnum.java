@@ -9,17 +9,15 @@ package com.grocery.store.enums;
  */
 public enum UserTypeEnum {
 
-	STAFF("Staff", "1"),
-	AFFILIATE("Affiliate", "2") ,
-	EXISTINGUSER("ExistingUser", "3"),
-	NORMALUSER("NormalUser", "4");
+	STAFF("1"),
+	AFFILIATE("2") ,
+	EXISTINGUSER("3"),
+	NORMALUSER("4");
 	
 	private final String userType;
-	private final String value;
-	private UserTypeEnum(final String userType, final String value)
+	private UserTypeEnum(final String userType)
 	{
 		this.userType = userType;
-		this.value = value;
 	}
 
 	public static UserTypeEnum valueOfLabel(String label) {

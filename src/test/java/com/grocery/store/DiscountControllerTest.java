@@ -31,7 +31,7 @@ public class DiscountControllerTest {
     @Test
     public void getDiscountTest()  {
 
-        String response = controller.getDiscount("0001");
+        String response = controller.getDiscount("0001").getBody().toString();
         String expected = "14.0";
        Assert.assertEquals(expected, response);
     }
